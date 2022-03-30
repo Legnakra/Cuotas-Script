@@ -12,6 +12,16 @@ directorio="QUOTA"
 
 #Zona de declaración de funciones.
 
+#Función comprobar root
+function f_miraRoot {
+    if [ `id -u` = 0 ]; then
+        return 0;
+    else
+        echo 'Ingrese como root (Necesario para ejecutar el script)'
+        exit
+    fi
+}
+
 #Función existe directorio
 function f_existe {
     if [ -d "$directorio" ]
@@ -24,14 +34,7 @@ function f_existe {
     fi
 }
 
-#Función comprobar root
-function f_miraRoot {
-    if dpkg -l &> /dev/null; then
-    return 0
-    else
-    return 1
-fi
-}
+
 
 #Función listar dispositivos de bloques
 function f_listardispositivos {
