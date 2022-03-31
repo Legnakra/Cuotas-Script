@@ -3,7 +3,7 @@
 #Versión:
 #Descripción: práctica cuotas - script
 #Fecha de Creación: 28-03-2022
-#Fecha de Modificación
+#Fecha de Modificación: 
 #Zona de declaración de variables.
 ruta="/home/usuario/"
 directorio="QUOTA"
@@ -35,18 +35,13 @@ function f_existe {
         else
             echo "Salir";
             exit
+        fi
     fi
 }
 
 #Función listar dispositivos de bloques
 function f_listardispositivos {
     sudo lsblk -f;
-}
-
-#Función UUID (Falta depurar ya que no funciona aún)
-function f_UUID {
-    read -p "Introduzca el nombre del dispositivo de bloques (/dev/?): " dispositivo;
-    sudo blkid /dev/$dispositivo | cut -d' ' -f2 | cut -d\" -f2;
 }
 
 
