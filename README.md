@@ -5,8 +5,8 @@ El siguiente script está diseñado para configurar quotas en Debian 11 y hacerl
 de forma automática. 
 
 Gracias por adelantado a: 
-* [Gonzalo Peña Calero](www.github.com/Gpc23)
-* [Jose Antonio Calero González](www.github.com/joseantoniocgongalez)
+* [Gonzalo Peña Calero](https://github.com/Gpc23)
+* [Jose Antonio Calero González](https://.github.com/joseantoniocgongalez)
 
 ## Planteamiento
 Las funciones que hemos creado son:
