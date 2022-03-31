@@ -23,5 +23,5 @@ Las funciones que hemos creado son:
 ## Autores :computer::computer_mouse:
 * María Jesús Alloza
 * Gonzalo Peña
-* Jose Antonio Calero
+* Jose Antonio Calero  
 :school: I.E.S. Gonzalo Nazareno (Dos Hermanas, Sevilla).
