@@ -14,39 +14,51 @@ directorio="QUOTA"
 
 #Función comprobar root
 function f_miraRoot {
-    if [ `id -u` = 0 ]; then
+    if [ $(id -u) = 0 ]; then
         return 0;
     else
-        echo 'Ingrese como root (Necesario para ejecutar el script)'
+        echo "Ingrese como root (Necesario para ejecutar el script.)"
         exit
     fi
 }
 
 #Función existe directorio
 function f_existe {
-    if [ -d "$directorio" ]
-    then
+    if [ -d $directorio ]; then
         echo "El directorio existe"
-        return 0
+        return 0;
     else
-        echo "El directorio no existe"
-        return 1
+        read -p "El directorio no existe. ¿Quiere crearlo (Y/N)?" var;
+        if [[ $var = "Y" ]]; then
+            $(mkdir /QUOTA);
+            return 0;
+        else
+            echo "Salir";
+            exit
     fi
 }
 
-
-
 #Función listar dispositivos de bloques
 function f_listardispositivos {
-    lsblk
+    sudo lsblk -f;
 }
 
 #Función UUID (Falta depurar ya que no funciona aún)
 function f_UUID {
-    echo 'Introduzca el nombre del dispositivo de bloques: '
-    read dispositivo
+    read -p "Introduzca el nombre del dispositivo de bloques (/dev/?): " dispositivo;
     sudo blkid /dev/$dispositivo | cut -d' ' -f2 | cut -d\" -f2;
 }
+
+
+#Función UUID (Falta depurar ya que no funciona aún)
+function f_UUID {
+    echo 'Introduzca el nombre del dispositivo de bloques: '
+    read -p dispositivo
+    UUID = $(blkid /dev/$dispositivo | cut -d' ' -f2 | cut -d\" -f2) $UUID;
+    echo $UUID
+}
+
+
 #Función modificar fstab
 
 
@@ -66,5 +78,8 @@ function f_UUID {
 
 #Fin Zona.
 
-f_existe 
+
 f_miraRoot
+f_existe 
+f_listardispositivos
+f_UUID
