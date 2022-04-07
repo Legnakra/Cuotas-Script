@@ -6,7 +6,7 @@ de forma automática.
 
 Gracias por adelantado a: 
 * [Gonzalo Peña Calero](https://github.com/Gpc23)
-* [Jose Antonio Calero González](https://.github.com/joseantoniocgongalez)
+* [Jose Antonio Canalo González](https://.github.com/joseantoniocgongalez)
 
 ## Planteamiento
 Las funciones que hemos creado son:
@@ -21,7 +21,7 @@ Las funciones que hemos creado son:
 * Configurar la quota.
 
 ## Autores :computer::computer_mouse:
-* María Jesús Alloza
-* Gonzalo Peña
-* Jose Antonio Calero  
+* María Jesús Alloza Rodríguez
+* Gonzalo Peña Calero
+* Jose Antonio Canalo González
 :school: I.E.S. Gonzalo Nazareno (Dos Hermanas, Sevilla).
