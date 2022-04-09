@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Autor: María Jesús Alloza, Jose Antonio Calero, Gonzalo Peña
+#Autor: María Jesús Alloza, Jose Antonio Canalo, Gonzalo Peña
 #Versión:
 #Descripción: práctica cuotas - script
 #Fecha de Creación: 28-03-2022
