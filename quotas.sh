@@ -16,24 +16,33 @@ q_group="/QUOTA/aquota.group"
 
 #Función comprobar root
 function f_miraRoot {
-    if [ $(id -u) = 0 ]; then
-        return 0;
-    else
-        echo "Ingrese como root (Necesario para ejecutar el script.)"
-        exit
-    fi
+        if [ $(id -u) = 0 ]; then
+                return 0;
+        else
+                echo "Ingrese como root (Necesario para ejecutar el script.)"
+                read -p "¿Desea ingresar como root (Y/N)?: " var;
+                        if [[ $var = "Y" ]]; then
+                                sudo su
+                                if [ $(id -u) = 0 ]; then
+                                        return 0;
+                                else
+                                        return 1;
+                        exit
+                                fi
+                        fi
+        fi
 }
 
 
 #Función existe directorio
-function f_existe {
+function f_existe_directorio {
     if [ -d $directorio ]; then
         echo "El directorio existe."
         return 0;
     else
         read -p "El directorio no existe. ¿Quiere crearlo (Y/N)?" var;
         if [[ $var = "Y" ]]; then
-            $(mkdir /QUOTA);
+            $(mkdir /$directorio);
             return 0;
         else
             echo "Salir.";
@@ -45,7 +54,7 @@ function f_existe {
 
 #Función listar dispositivos de bloques
 function f_listardispositivos {
-    sudo lsblk -f;
+        lsblk -f;
 }
 
 
@@ -56,6 +65,10 @@ function f_UUID {
     echo $UUID
         exit
 }
+
+egrep/ awk
+
+
 
 
 #Función modificar fstab
@@ -113,9 +126,9 @@ function f_quotainstalado {
 
 #Función habilita quota.
 function f_habquota {
-        if [ -f "$q_user" "$q_group" ]
+        if [ -f "$q_user""$q_group" ]
         then
-                echo "Los directorios aquota.user y aquota.group existen."
+                echo "Los ficheros aquota.user y aquota.group existen."
                 return 0;
         else
                 quotacheck -ug "$directorio" && quotaon "$directorio"
@@ -139,9 +152,10 @@ function  f_plantillaquota {
         read -p "Indique el usuario que quiere usar como plantilla: " user
 		if [[ $(cat/etc/passwd |grep $user) ]]; 
 		then
-			echo "El usuario ya existe"
+			echo "El usuario ya existe."
 		else
-			useradd -s /bin/bash -m $user echo "Usuario creado"
+			useradd -s /bin/bash -m $user;
+                        echo "Usuario creado."
 		fi
 	echo $user
 }
@@ -149,10 +163,8 @@ function  f_plantillaquota {
 
 #Función configura quota
 function f_configura_quota {
-	read -p "¿Que capacidad en MB desea asignarle al usuario $v_user?:"
-		var
-		if [[ $var =$i~ ^[0-9]+$ ]]; 
-		then
+	read -p "¿Que capacidad en MB desea asignarle al usuario $v_user?:" var
+		if [[ $var = $directorio~^[0-9]+$ ]]; then
 			echo "$v_uer $var" >> /QUOTA/aquota.user
 			echo "$v_user $var" >> /QUOTA/aquota.group
 			echo "Capacidad asignada."	
@@ -166,13 +178,13 @@ function f_configura_quota {
 
 
 f_miraRoot
-f_existe
+f_existe_directorio
+f_internet
+f_quotainstalado
 f_listardispositivos
 f_UUID
 echo $(f_UUID)
 f_modfstab
-f_internet
-f_quotainstalado
 f_habquota
 f_cpfstab
 f_plantillaquota
