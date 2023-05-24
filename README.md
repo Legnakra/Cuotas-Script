@@ -24,4 +24,4 @@ Las funciones que hemos creado son:
 * María Jesús Alloza Rodríguez
 * Gonzalo Peña Calero
 * Jose Antonio Canalo González
-:school: I.E.S. Gonzalo Nazareno (Dos Hermanas, Sevilla).
+* :school: I.E.S. Gonzalo Nazareno (Dos Hermanas, Sevilla).
